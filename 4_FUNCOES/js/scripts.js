@@ -180,3 +180,26 @@ const untilTen = (n, m) => {
 }
 
 untilTen(100, 10)
+
+// ***Recursão infinita*****
+
+// const run = () => {
+//   console.log("Execultando...");
+//   run()
+// }
+
+// run()
+
+const factorial = (x) => {
+  if(x === 0 ){
+    return 1;
+  }else{
+    return x * factorial(x - 1)
+  }
+}
+
+const num = 6;
+
+const result = factorial(num)
+
+console.log(`O Fatorial de ${num} é: ${result}`)
