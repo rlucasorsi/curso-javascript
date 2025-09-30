@@ -318,7 +318,7 @@ console.log(typeof myJson);
 
 // 28 - JSON para objeto (parse) / Objeto para JSON (stringify)
 
-const myObject = JSON.parse(myJson);
+const myObject = JSON.parse(myJson); //JSON para Objeto
 console.log(myObject);
 console.log(typeof myObject);
 
@@ -330,6 +330,7 @@ console.log(typeof myObject);
 myObject.isOpenToWork = true;
 console.log(myObject);
 
-const newJson = JSON.stringify(myObject);
+const newJson = JSON.stringify(myObject); //Objeto para JSON
 console.log(newJson);
 console.log(typeof newJson);
+
