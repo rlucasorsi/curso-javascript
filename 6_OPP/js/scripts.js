@@ -135,61 +135,112 @@ class Caminhao {
     this.cor = cor;
   }
 
-  descreverCaminhao () {
-    console.log(`Este caminha tem ${this.eixos} eixos e é da cor ${this.cor}`)
+  descreverCaminhao() {
+    console.log(`Este caminha tem ${this.eixos} eixos e é da cor ${this.cor}`);
   }
-} 
+}
 
-const scania = new Caminhao(4, "Vermelho")
+const scania = new Caminhao(4, "Vermelho");
 
 console.log(scania);
 
-scania.descreverCaminhao()
+scania.descreverCaminhao();
 
-Caminhao.motor = 4 // Não adiciona o metodo dessa forma quando é uma classe
+Caminhao.motor = 4; // Não adiciona o metodo dessa forma quando é uma classe
 
-const c2 = new Caminhao(6, "Azul")
-console.log(c2)
-console.log(c2.motor) //retorna undefined
+const c2 = new Caminhao(6, "Azul");
+console.log(c2);
+console.log(c2.motor); //retorna undefined
 
-Caminhao.prototype.motor = 4.0
+Caminhao.prototype.motor = 4.0;
 
-const c3 = new Caminhao(6, "Rosa")
+const c3 = new Caminhao(6, "Rosa");
 
 console.log(c3.motor);
 
 // 11 - override
 class Humano {
-  constructor (nome, idade) {
-    this.nome = nome
-    this.idade = idade
+  constructor(nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
   }
 }
 
-const lucas = new Humano('Lucas', 26)
+const lucas = new Humano("Lucas", 26);
 console.log(lucas);
 
-Humano.prototype.idade = 'Não definida'
+Humano.prototype.idade = "Não definida";
 
 console.log(lucas.idade);
 console.log(Humano.prototype.idade);
 
 // 12 - symbol
 class Aviao {
-  constructor (marca, turbinas) {
-    this.marca = marca
-    this.turbinas = turbinas
+  constructor(marca, turbinas) {
+    this.marca = marca;
+    this.turbinas = turbinas;
   }
 }
 
-const asas = Symbol()
-const pilotos = Symbol()
+const asas = Symbol();
+const pilotos = Symbol();
 
-Aviao.prototype[asas] = 2
-Aviao.prototype[pilotos] = 3
+Aviao.prototype[asas] = 2;
+Aviao.prototype[pilotos] = 3;
 
-const boeing = new Aviao("boeing", 4)
+const boeing = new Aviao("boeing", 4);
 
 console.log(boeing);
-console.log(boeing[asas])
-console.log(boeing[pilotos])
+console.log(boeing[asas]);
+console.log(boeing[pilotos]);
+
+// 13 - Getter e Setter
+class Post {
+  constructor(titulo, descricao, tags) {
+    this.titulo = titulo;
+    this.descricao = descricao;
+    this.tags = tags;
+  }
+
+  get exibirTitulo() {
+    console.log(`O titulo do post é: ${this.titulo}`);
+  }
+
+  set adicionarTags(tags) {
+    const tagsArray = tags.split(", ");
+    this.tags = tagsArray;
+  }
+}
+
+const myPost = new Post("Primeiro post", "Esse é o meu primeiro post do blog");
+
+console.log(myPost);
+
+console.log(myPost.exibirTitulo);
+
+myPost.adicionarTags = "JavaScript, NodeJs, React";
+
+console.log(myPost);
+
+// 14 - Herança
+class Mamifero {
+  constructor(patas) {
+    this.patas = patas;
+  }
+}
+
+class Lobo extends Mamifero {
+  constructor(patas, nome) {
+    super(patas);
+    this.nome = nome;
+  }
+}
+
+const shark = new Lobo(4, "Shark");
+
+// 15 - instanceof
+console.log(shark instanceof Lobo);
+console.log(Lobo instanceof Mamifero)
+console.log(new Lobo(4,"teste") instanceof Mamifero);
+
+console.log(new Post("title", "uma descrição") instanceof Lobo);
